@@ -77,6 +77,10 @@ while $IS_LARAVEL_INSTALLING; do
 
     composer global require laravel/installer
 
+    echo
+    echo "Creating global executable for Laravel Installer..."
+    sudo ln -s $HOME_FOLDER/.config/composer/vendor/bin/laravel /usr/local/bin/laravel
+
     IS_LARAVEL_INSTALLING=false
 done
 
