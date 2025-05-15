@@ -1,2 +1,17 @@
-# web-development-env
-This is my collection of scripts for development environment setup from scratch. Everything is separated by OS.
+# PHP Web Development Environment
+
+## Table of contents
+
+- OS
+    - Linux
+        - [Debian](#debian)
+        - [Ubuntu](#ubuntu)
+        - [Arch Linux](#arch-linux)
+
+-----
+
+### Debian
+
+### Ubuntu
+
+### Arch Linux
