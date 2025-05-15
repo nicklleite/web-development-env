@@ -22,7 +22,7 @@ CURRENT_PHP_VERSION=8.4
 # Installing PHP (current version) with https://php.new
 echo
 echo "Installing PHP with https://php.new"
-/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
+/bin/bash -c "$(curl -fsSL https://php.new/install/linux/${CURRENT_PHP_VERSION})"
 
 # PHP Versions (from 7.4)
 PHP_VERSIONS=("8.3" "8.2" "8.1" "8.0" "7.4")
@@ -56,40 +56,6 @@ for version in "${PHP_VERSIONS[@]}"; do
 
     # Register with update-alternatives
     sudo update-alternatives --install /usr/bin/php php /usr/bin/php$version 100
-done
-
-# Install Composer
-IS_COMPOSER_INSTALLING=true
-
-while $IS_COMPOSER_INSTALLING; do
-    echo "Downloading Composer..."
-    
-    cd $HOME_FOLDER
-    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-    php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'.PHP_EOL; } else { echo 'Installer corrupt'.PHP_EOL; unlink('composer-setup.php'); exit(1); }"
-    php composer-setup.php
-    php -r "unlink('composer-setup.php');"
-    
-    echo
-    echo "Creating global executable for Composer..."
-    sudo ln -s $HOME_FOLDER/composer.phar /usr/local/bin/composer
-    
-    IS_COMPOSER_INSTALLING=false
-done
-
-# Install Laravel installer
-IS_LARAVEL_INSTALLING=true
-
-while $IS_LARAVEL_INSTALLING; do
-    echo "Installing Laravel Installer..."
-
-    composer global require laravel/installer
-
-    echo
-    echo "Creating global executable for Laravel Installer..."
-    sudo ln -s $HOME_FOLDER/.config/composer/vendor/bin/laravel /usr/local/bin/laravel
-
-    IS_LARAVEL_INSTALLING=false
 done
 
 echo

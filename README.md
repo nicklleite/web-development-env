@@ -2,6 +2,7 @@
 
 ## Table of contents
 
+- [About](#about)
 - OS
     - Linux
         - [Debian](#debian)
