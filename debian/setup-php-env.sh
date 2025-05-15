@@ -16,8 +16,16 @@ curl -fsSL https://packages.sury.org/php/apt.gpg | sudo gpg --dearmor -o /usr/sh
 # Added the repository to the APT
 echo "deb [signed-by=/usr/share/keyrings/php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
 
-# PHP Versions
-PHP_VERSIONS=("8.4" "8.3" "8.2" "8.1" "8.0" "7.4")
+# Current PHP Version
+CURRENT_PHP_VERSION=8.4
+
+# Installing PHP (current version) with https://php.new
+echo
+echo "Installing PHP with https://php.new"
+/bin/bash -c "$(curl -fsSL https://php.new/install/linux/8.4)"
+
+# PHP Versions (from 7.4)
+PHP_VERSIONS=("8.3" "8.2" "8.1" "8.0" "7.4")
 
 # Common PHP extensions for general development
 COMMON_EXTENSIONS=(
